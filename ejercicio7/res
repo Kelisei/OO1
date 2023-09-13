@@ -1,0 +1,2 @@
+1. En el primero ejecuta aportes del gerente y montoBasico, en el segundo ejecuta sueldoBasico de EmpleadoJerarquico que llama a sueldoBasico del EMpleado y llama a bonoPorCategoria .
+2. aportesDeAlan: 57000 * 0.05 = 2850, el otro 67850

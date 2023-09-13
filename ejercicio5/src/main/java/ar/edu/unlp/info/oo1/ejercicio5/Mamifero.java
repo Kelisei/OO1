@@ -76,16 +76,17 @@ public class Mamifero {
 		boolean esta = false;
 		Mamifero papa = this.getPadre();
 		if (papa != null) {
-			esta =(unMamimefero == padre);
+			esta = (unMamimefero == padre);
 			if (!esta) {
 				esta = papa.tieneComoAncestroA(unMamimefero);
 			}
-		} else {
-			madre = this.getMadre();
-			if (madre != null) {
-				esta = (unMamimefero == madre);
+		} 
+		if (!esta) {
+			Mamifero mama = this.getMadre();
+			if (mama != null) {
+				esta = (unMamimefero == mama);
 				if (!esta) {
-					esta = madre.tieneComoAncestroA(unMamimefero);
+					esta = mama.tieneComoAncestroA(unMamimefero);
 				}
 			}
 		}
