@@ -21,7 +21,7 @@ public class DateLapse {
 		return (int) this.getFrom().until(this.getTo(), ChronoUnit.DAYS);
 	}
 	public boolean includesDate(LocalDate other) {
-		return other.isAfter(this.getFrom()) || other.isEqual(this.getFrom()) && other.isBefore(this.getTo()) || other.isEqual(this.getTo());
+		return (other.isAfter(this.getFrom()) || other.isEqual(this.getFrom())) && (other.isBefore(this.getTo()) || other.isEqual(this.getTo()));
 	}
 	public boolean overlaps(DateLapse anotherDateLapse) {
 		return (this.includesDate(anotherDateLapse.getFrom()) || this.includesDate(anotherDateLapse.getTo()));

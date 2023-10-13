@@ -31,7 +31,7 @@ public class OOBnB {
 
 	public Reserva aniadirReserva(LocalDate desde, LocalDate hasta, Usuario inquilino, Propiedad propiedad) {
 		Reserva nuevaReserva = new Reserva(desde, hasta, propiedad, inquilino);
-		if (propiedad.estaLibre(nuevaReserva)) {
+		if (propiedad.estaLibre(nuevaReserva.getPeriodo())) {
 			inquilino.aniadirReserva(nuevaReserva);
 			propiedad.aniadirReserva(nuevaReserva);
 			return nuevaReserva;
@@ -44,7 +44,7 @@ public class OOBnB {
 	}
 
 	public void eliminarReserva(Reserva reserva) {
-		if (reserva.yaPaso()) {
+		if (reserva.esDespues()) {
 			reserva.getInquilino().eliminarReserva(reserva);
 			reserva.getPropiedad().eliminarReserva(reserva);
 		}

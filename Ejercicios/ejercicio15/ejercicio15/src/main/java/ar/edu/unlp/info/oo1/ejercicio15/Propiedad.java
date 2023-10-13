@@ -16,14 +16,19 @@ public class Propiedad {
 		this.direccion = direccion;
 		this.reservas = new ArrayList<Reserva>();
 	}
+	public double getPrecioReservasEnUnPeriodo(DateLapse periodo) {
+		return this.reservas.stream().filter(r -> r.solapado(periodo)).mapToDouble(r -> r.precioTotal()).sum();
+	}
 	public void aniadirReserva(Reserva reserva) {
 		this.reservas.add(reserva);
 	}
 	public void eliminarReserva(Reserva reserva) {
 		this.reservas.remove(reserva);
 	}
-	public boolean estaLibre(Reserva nuevaReserva) {
-		return this.reservas.stream().noneMatch(reserva -> reserva.solapado(nuevaReserva.getPeriodo()));
+	public boolean estaLibre(DateLapse periodo) {
+		// Si esta solapado retorna False
+		// Si no retorna true
+		return this.reservas.stream().noneMatch(reserva -> reserva.solapado(periodo));
 	}
 	public double getPrecioPorNoche() {
 		return this.precioPorNoche;

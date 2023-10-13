@@ -3,8 +3,6 @@ package ar.edu.unlp.info.oo1.ejercicio15;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-
 public class Usuario {
 	private String nombre;
 	private String direccion;
@@ -36,11 +34,11 @@ public class Usuario {
 	}
 	public double calcularIngresos(LocalDate desde, LocalDate hasta) {
 		DateLapse periodo = new DateLapse(hasta, desde);
-		return this.getReservas().stream().filter(r -> r.solapado(periodo)).mapToDouble(r -> r.precioTotal()).sum();
+		return this.getPropiedades().stream().mapToDouble(p -> p.getPrecioReservasEnUnPeriodo(periodo)).sum();
 	}
 	public List<Propiedad> propiedadesDisponible(LocalDate desde, LocalDate hasta) {
 		DateLapse periodo = new DateLapse(hasta, desde);
-		return this.getReservas().stream().filter(r -> periodo.overlaps(r.getPeriodo())).map(r -> r.getPropiedad()).collect(Collectors.toList());
+		return this.propiedades.stream().filter(p -> p.estaLibre(periodo)).toList();
 	}
 	public String getNombre() {
 		return nombre;

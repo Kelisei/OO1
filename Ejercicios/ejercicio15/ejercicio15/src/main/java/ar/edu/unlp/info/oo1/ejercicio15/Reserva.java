@@ -17,8 +17,8 @@ public class Reserva {
 		return this.getPropiedad().getPrecioPorNoche() * this.periodo.sizeInDays();
 	}
 	
-	public boolean yaPaso() {
-		return LocalDate.now().isBefore(this.periodo.getTo());
+	public boolean esDespues() {
+		return LocalDate.now().isBefore(this.periodo.getFrom());
 	}
 	public int duracion() {
 		return this.periodo.sizeInDays();
@@ -48,7 +48,6 @@ public class Reserva {
 		this.propiedad = propiedad;
 	}
 	public boolean solapado(DateLapse periodo) {
-		return this.getPeriodo().overlaps(periodo);
+		return this.getPeriodo().overlaps(periodo) || periodo.overlaps(this.getPeriodo());
 	}
-	
 }
