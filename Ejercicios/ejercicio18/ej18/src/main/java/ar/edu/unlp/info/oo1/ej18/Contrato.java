@@ -12,7 +12,7 @@ public abstract class Contrato {
 	}
 
 	public LocalDate getFechaInicio() {
-		return this.getFechaInicio();
+		return this.fechaInicio;
 	}
 	public Empleado getEmpleado() {
 		return this.empleado;

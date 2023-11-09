@@ -25,6 +25,7 @@ public class Empleado {
 		this.aCargoDeHijos = aCargoDeHijos;
 		this.inicioRelacionLaboral = inicioRelacionLaboral;
 		this.contratos = new ArrayList<>();
+		this.recibos = new ArrayList<>();
 	}
 
 	public String getCUIL() {
@@ -41,15 +42,15 @@ public class Empleado {
 
 	public void cargarContratoPorHoras(LocalDate fechaInicio, LocalDate fechaFin, double valorHora,
 			int horas) {
-		Contrato contrato = new PorHoras(fechaInicio, this, fechaFin, valorHora, horas);
 		if (this.isContratoVigenteVencido()) {
+			PorHoras contrato = new PorHoras(fechaInicio, this, fechaFin, valorHora, horas);
 			contratos.add(contrato);
 		}
 	}
 	public void cargarContratoPermanente(LocalDate fechaInicio, double mensualidad,
 			double porConyuge, double porHijos) {
-		Contrato contrato = new PlantaPermanente(fechaInicio, this, mensualidad, porConyuge, porHijos);
 		if (this.isContratoVigenteVencido()) {
+			PlantaPermanente contrato = new PlantaPermanente(fechaInicio, this, mensualidad, porConyuge, porHijos);
 			contratos.add(contrato);
 		}
 	}
@@ -68,7 +69,7 @@ public class Empleado {
 		if (vigente != null) {
 			return this.getContratoVigente().isVencido();
 		}
-		return false;
+		return true;
 	}
 
 	public int getAntiguedad() {
