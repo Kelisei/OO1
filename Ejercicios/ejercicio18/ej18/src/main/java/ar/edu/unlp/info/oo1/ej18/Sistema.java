@@ -48,4 +48,7 @@ public class Sistema {
 	public List<Recibo> generarRecibos() {
 		return this.nomina.stream().map(e -> e.generarRecibo()).toList();
 	}
+	public List<Empleado> test() {
+		return this.nomina.stream().sorted((Empleado e1, Empleado e2) -> Double.compare(e1.getPagoTotal(), e2.getPagoTotal())).limit(5).toList();
+	}
 }

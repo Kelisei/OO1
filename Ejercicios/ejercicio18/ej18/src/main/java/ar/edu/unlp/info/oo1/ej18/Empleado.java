@@ -12,7 +12,7 @@ public class Empleado {
 	private boolean aCargoDeConyuge;
 	private boolean aCargoDeHijos;
 	private LocalDate inicioRelacionLaboral;
-	private List<Contrato> contratos;
+	public List<Contrato> contratos;
 	private List<Recibo> recibos;
 	 
 	public Empleado(String nombre, String apellido, String CUIL, LocalDate fechaNacimiento, boolean aCargoDeConyuge,
